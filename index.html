@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naba Kumar Chouhan | GIS Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #27ae60;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --gray: #95a5a6;
+            --map-blue: #3498db;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 5px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0,0 L100,0 L100,100 Z" fill="%2327ae60" opacity="0.05"/></svg>');
+            background-size: 200px;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 40px;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #219653;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .profile-img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 10px solid white;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .about-stats {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-item {
+            background-color: white;
+            padding: 25px 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .stat-text {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        /* Skills Section */
+        .skills {
+            background-color: #f5f7fa;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background-color: var(--secondary);
+            border-radius: 5px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+
+        /* Experience Section - UPDATED SIMPLE LAYOUT */
+        .experience {
+            background-color: white;
+        }
+
+        .experience-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .experience-card {
+            background: white;
+            border-radius: 10px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid var(--secondary);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .experience-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .experience-header {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .experience-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .experience-title h3 {
+            font-size: 1.6rem;
+            color: var(--primary);
+        }
+
+        .experience-date {
+            background-color: rgba(39, 174, 96, 0.1);
+            color: var(--secondary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .experience-subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .experience-location {
+            display: flex;
+            align-items: center;
+            color: var(--gray);
+            font-size: 1rem;
+            gap: 8px;
+        }
+
+        .experience-description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .experience-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: rgba(39, 174, 96, 0.1);
+            color: var(--secondary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background-color: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Projects Section */
+        .projects {
+            background-color: #f5f7fa;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-img {
+            height: 200px;
+            width: 100%;
+            background-color: var(--map-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .project-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--map-blue);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--dark);
+            color: white;
+        }
+
+        .contact .section-title h2 {
+            color: white;
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 50px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .experience-title {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .experience-date {
+                align-self: flex-start;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .profile-img {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .stat-item {
+                padding: 20px 15px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-card {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 140px 0 80px;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn {
+                display: block;
+                margin-bottom: 15px;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Naba<span>Chouhan</span></a>
+                
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Naba Kumar Chouhan</h1>
+                    <h2>Web GIS Developer & Project Scientist</h2>
+                    <p>Specializing in geospatial technology with expertise in OpenLayers, GeoServer, PostgreSQL/PostGIS, and ArcGIS products. Currently working as a Project Scientist IT at Assam State Space Application Centre.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn">Get In Touch</a>
+                        <a href="https://www.linkedin.com/in/naba-kumar-chouhan-667b46177/" target="_blank" class="btn btn-outline">View LinkedIn</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjo2xq1-U_SXw7wM0FVfExtlLA3I60ynk3zrySsrXxCt-ZZH7v1QiVQ2-q6BuEijI9t0acZNuyiuAwhPtT8KcOat6wT7FwTs45sIfMZHg8l43rTVFqCRWqGuHuTNr7xdAbyiHZel0YAKtUDFOnWUDRSLSZn-42Dod3z42UJXFoGJqA14-2stSIjBWohedO9/s320/profile.png" alt="Naba Kumar Chouhan" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h3>GIS & Web Mapping Specialist</h3>
+                    <p>I am a dedicated GIS professional with over 2 years of experience at Assam State Space Application Centre, specializing in Web GIS development and spatial data analysis. My work focuses on creating interactive mapping applications and implementing geospatial solutions.</p>
+                    <p>With expertise in both open-source (OpenLayers, GeoServer, PostGIS) and proprietary (ArcGIS) GIS technologies, I develop robust spatial applications that serve critical needs in environmental monitoring, urban planning, and resource management.</p>
+                    <p>My current role as Project Scientist IT involves leading GIS projects, developing web mapping applications, and providing technical expertise in spatial data infrastructure and analysis.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">2+</div>
+                        <div class="stat-text">Years GIS Experience</div>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-text">GIS Projects</div>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-text">Technologies</div>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-text">Spatial Solutions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Technical Skills</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category fade-in">
+                    <h3>Web GIS Technologies</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>OpenLayers</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>GeoServer</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>ArcGIS Enterprise</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>ArcGIS Pro</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="88%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3>Spatial Databases</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>PostgreSQL/PostGIS</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="92%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Quantum GIS (QGIS)</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Survey123</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>ArcGIS Products</span>
+                            <span>87%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="87%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3>Web Development</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Node.js</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Express.js</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>JavaScript</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>HTML/CSS</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="95%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section - UPDATED SIMPLE LAYOUT -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Experience</h2>
+            </div>
+            <div class="experience-container">
+                <!-- Current Role -->
+                <div class="experience-card fade-in">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            <h3>Project Scientist IT</h3>
+                            <div class="experience-date">
+                                <i class="far fa-calendar"></i> Oct 2025 - Present · 4 mos
+                            </div>
+                        </div>
+                        <div class="experience-subtitle">Assam State Space Application Centre</div>
+                        <div class="experience-location">
+                            <i class="fas fa-map-marker-alt"></i> Guwahati, Assam, India · On-site
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        <p>Leading GIS projects and developing spatial applications for environmental monitoring and resource management. Implementing Web GIS solutions using open-source and proprietary technologies.</p>
+                        <p>Responsibilities include project planning, technical architecture design, team coordination, and implementation of geospatial solutions for various government and research initiatives.</p>
+                    </div>
+                    <div class="experience-skills">
+                        <span class="skill-tag">ArcGIS Enterprise</span>
+                        <span class="skill-tag">PostGIS</span>
+                        <span class="skill-tag">GeoServer</span>
+                        <span class="skill-tag">Project Management</span>
+                        <span class="skill-tag">Technical Leadership</span>
+                    </div>
+                </div>
+                
+                <!-- Previous Role -->
+                <div class="experience-card fade-in">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            <h3>Web GIS Developer Intern</h3>
+                            <div class="experience-date">
+                                <i class="far fa-calendar"></i> Jan 2024 - Oct 2025 · 1 yr 10 mos
+                            </div>
+                        </div>
+                        <div class="experience-subtitle">Assam State Space Application Centre</div>
+                        <div class="experience-location">
+                            <i class="fas fa-map-marker-alt"></i> Guwahati, Assam, India · On-site
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        <p>Developed and maintained web-based GIS applications using OpenLayers, GeoServer, and PostgreSQL/PostGIS stack. Implemented spatial data visualization and analysis tools for various projects.</p>
+                        <p>Worked on creating interactive mapping interfaces, spatial database design, and integration of GIS services with web applications.</p>
+                    </div>
+                    <div class="experience-skills">
+                        <span class="skill-tag">OpenLayers</span>
+                        <span class="skill-tag">GeoServer</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">PostGIS</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">QGIS</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>GIS Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-img">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Interactive Web Mapping Portal</h3>
+                        <p class="project-description">Developed a comprehensive web mapping portal for spatial data visualization using OpenLayers and GeoServer with PostGIS backend.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">OpenLayers</span>
+                            <span class="tech-tag">GeoServer</span>
+                            <span class="tech-tag">PostGIS</span>
+                            <span class="tech-tag">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-img">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Spatial Database Management System</h3>
+                        <p class="project-description">Designed and implemented a PostgreSQL/PostGIS database for storing and querying large-scale geospatial data with optimized spatial indexes.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">PostGIS</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">QGIS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-img">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ArcGIS Enterprise Deployment</h3>
+                        <p class="project-description">Deployed and configured ArcGIS Enterprise for organizational spatial data sharing and analysis with Survey123 integration for field data collection.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">ArcGIS Enterprise</span>
+                            <span class="tech-tag">ArcGIS Pro</span>
+                            <span class="tech-tag">Survey123</span>
+                            <span class="tech-tag">JavaScript API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>contact@nabakumar.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+91 98765 43210</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Guwahati, Assam, India</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Connect With Me</h3>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/naba-kumar-chouhan-667b46177/" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fas fa-globe"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Naba Kumar Chouhan. All Rights Reserved.</p>
+            <p>GIS Developer Portfolio | Assam State Space Application Centre</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+                document.querySelector('.mobile-menu-btn i').classList.remove('fa-times');
+                document.querySelector('.mobile-menu-btn i').classList.add('fa-bars');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const experienceCards = document.querySelectorAll('.experience-card');
+        
+        const animateOnScroll = () => {
+            const triggerBottom = window.innerHeight * 0.85;
+            
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                
+                if (elementTop < triggerBottom) {
+                    element.classList.add('visible');
+                }
+            });
+            
+            experienceCards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                
+                if (cardTop < triggerBottom) {
+                    card.classList.add('visible');
+                }
+            });
+            
+            // Animate skill bars
+            document.querySelectorAll('.skill-level').forEach(bar => {
+                const barTop = bar.getBoundingClientRect().top;
+                
+                if (barTop < triggerBottom && !bar.style.width) {
+                    const level = bar.getAttribute('data-level');
+                    bar.style.width = level;
+                }
+            });
+        };
+
+        // Initial animation check
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+
+        // Initialize animations on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add initial animation to hero elements
+            document.querySelector('.hero-text').style.animationDelay = '0.2s';
+            document.querySelector('.hero-image').style.animationDelay = '0.4s';
+            
+            // Add delay to stat items
+            document.querySelectorAll('.stat-item').forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+            });
+            
+            // Add delay to experience cards
+            document.querySelectorAll('.experience-card').forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.2}s`;
+            });
+            
+            // Add delay to project cards
+            document.querySelectorAll('.project-card').forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>
