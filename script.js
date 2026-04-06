@@ -26,9 +26,9 @@ const body = document.body;
 const icon = themeToggle.querySelector('i');
 
 const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'dark') {
-    body.classList.add('dark-theme');
-    icon.classList.replace('fa-moon', 'fa-sun');
+if (savedTheme === 'light') {
+    body.classList.remove('dark-theme');
+    icon.classList.replace('fa-sun', 'fa-moon');
 }
 
 themeToggle.addEventListener('click', () => {
