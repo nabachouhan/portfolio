@@ -1,0 +1,35 @@
+[
+    {
+        "title": "Web GIS & Mapping",
+        "icon": "fas fa-globe-americas",
+        "skills": [
+            { "name": "OpenLayers", "icon": "fas fa-layer-group" },
+            { "name": "GeoServer", "icon": "fas fa-server" },
+            { "name": "Leaflet", "icon": "fas fa-map" },
+            { "name": "Mapbox", "icon": "fas fa-map-pin" },
+            { "name": "ArcGIS Enterprise", "icon": "fas fa-cloud" }
+        ]
+    },
+    {
+        "title": "Databases & GIS Software",
+        "icon": "fas fa-database",
+        "skills": [
+            { "name": "PostgreSQL", "icon": "fas fa-database" },
+            { "name": "PostGIS", "icon": "fas fa-globe-americas" },
+            { "name": "QGIS", "icon": "fas fa-search-location" }
+        ]
+    },
+    {
+        "title": "Development & Infrastructure",
+        "icon": "fas fa-tools",
+        "skills": [
+            { "name": "JavaScript", "icon": "fab fa-js" },
+            { "name": "Node.js", "icon": "fab fa-node-js" },
+            { "name": "SQL", "icon": "fas fa-code" },
+            { "name": "Git", "icon": "fab fa-git-alt" },
+            { "name": "Linux", "icon": "fab fa-linux" },
+            { "name": "Docker", "icon": "fab fa-docker" },
+            { "name": "Nginx", "icon": "fas fa-server" }
+        ]
+    }
+]

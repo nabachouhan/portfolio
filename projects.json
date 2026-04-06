@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "title": "Assam Spatial Data Repository System",
+        "date": "2024-26",
+        "image": "/images/asdr.png",
+        "description": "Centralized platform for managing and serving geospatial datasets for Assam.",
+        "details": [
+            "Building a scalable spatial data repository system enabling users to Browse, Request, and Download geospatial data, process and store them in PostGIS, and  Geoportal for visualization and analysis.",
+            "Implemented API-driven workflows for seamless data ingestion, layer management, and access control.",
+            "Integrated WMS services for real-time visualization and provided dataset download functionality.",
+            "Focused on performance optimization, structured data handling, and user-friendly interaction for managing large geospatial datasets.",
+            "Developed a responsive and user-friendly Geoportal for seamless interaction with geospatial data.",
+            "Integrated Tools in Geoportal - Buffer analysis, Measure distance and area, Draw and export data, Query Builder, Data Conversion, Search location, Print Etc..."
+        ],
+        "tech": [
+            "OpenLayers",
+            "API Integration",
+            "PostGIS",
+            "PostgreSQL",
+            "GeoServer"
+        ],
+        "link": ""
+    },
+    {
+        "id": 2,
+        "title": "Assam Nagaland Border Monitoring Portal",
+        "date": "2026",
+        "image": "/images/border.png",
+        "description": "WebGIS system for monitoring and analyzing sensitive border regions.",
+        "details": [
+            "Developed a WebGIS-based monitoring platform integrating multiple administrative and Temporal layers for spatial analysis.",
+            "Enabled real-time map visualization, feature inspection, and layer-based filtering to support monitoring workflows.",
+            "Implemented efficient GeoServer WMS rendering and optimized spatial queries using PostGIS.",
+            "Designed the system to support decision-making by providing clear, interactive insights into geospatial data."
+        ],
+        "tech": [
+            "OpenLayers",
+            "API Integration",
+            "PostGIS",
+            "PostgreSQL",
+            "GeoServer"
+        ],
+        "link": ""
+    },
+    {
+        "id": 3,
+        "title": "GatiShakti API Integration",
+        "date": "2025",
+        "image": "/images/gatishakti.png",
+        "description": "Integration of infrastructure datasets using external geospatial APIs.",
+        "details": [
+            "Developed API to Serve infrastructure-related departmental datasets of Assam to GatiShakti Portal.",
+            "Implemented robust API for data parsing."
+        ],
+        "tech": [
+            "GeoServer",
+            "OpenLayers",
+            "PostgreSQL",
+            "PostGIS",
+            "API Integration"
+        ],
+        "link": ""
+    }
+]
